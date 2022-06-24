@@ -1,0 +1,19 @@
+void  check_file(char *file)
+{
+  int   fd;
+  char  **file_name;
+
+  fd = open(file, O_RDONLY);
+  if (fd < 0)
+  {
+    perror("File");
+    exit(1);
+  }
+  file_name = ft_split(file, '.');
+  if (ft_strncmp(file_name[1], "ber", ft_strlen(file_name[1])))
+  {
+    close(fd);
+    printf("Extension is invalid\n");
+    exit(1);
+  }
+}

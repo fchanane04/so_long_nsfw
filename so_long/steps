@@ -1,0 +1,60 @@
+	mlx = mlx_init();
+	mlx_win = mlx_new_window(mlx, 64 * columns, 64 * lines, "Infinity War");
+	img_ptr1 = mlx_xpm_file_to_image(mlx,"./images/wall.xpm", width, height);
+	img_ptr2 = mlx_xpm_file_to_image(mlx,"./images/purple.xpm", width, height);
+	img_ptr5 = mlx_xpm_file_to_image(mlx,"./images/blue.xpm", width, height);
+	img_ptr3 = mlx_xpm_file_to_image(mlx,"./images/thanos.xpm", width, height);
+	img_ptr4 = mlx_xpm_file_to_image(mlx,"./images/bg.xpm", width, height);
+	img_ptr6 =  mlx_xpm_file_to_image(mlx,"./images/exit.xpm", width, height);
+	i = 0;
+	mlx_put_image_to_window(mlx, mlx_win, img_ptr4, 0, 0);
+	while (i < lines)
+	{
+		j = 0;
+		while (j < columns)
+		{
+			if (the_maze[i][j] == '1')
+				mlx_put_image_to_window(mlx, mlx_win, img_ptr1, 64 * j, 64 * i);
+			if (the_maze[i][j] == 'P')
+				mlx_put_image_to_window(mlx, mlx_win, img_ptr3, 64 * j, 64 * i);
+			if (the_maze[i][j] == 'E')
+				mlx_put_image_to_window(mlx, mlx_win, img_ptr6, 64 * j, 64 * i);
+			clc = 1;
+			if (the_maze[i][j] == 'C')
+			{
+				if (clc == 1)
+				{
+					mlx_put_image_to_window(mlx, mlx_win, img_ptr2, 64 * j, 64 * i);
+					clc++;
+				}
+				if (clc == 2)
+				{
+					mlx_put_image_to_window(mlx, mlx_win, img_ptr5, 64 * j, 64 * i);
+					clc++;	
+				}
+			}
+			j++;
+		}
+		i++;
+	}
+	mlx_hook(mlx_win, 17, 0L, destroy, NULL);
+	mlx_key_hook(mlx_win, esc_fon, the_maze);
+	mlx_loop(mlx);
+
+
+
+
+
+	SRC = 	draw.c\
+      	errors.c\
+		first_check.c\
+		second_check.c\
+		get_next_line.c\
+		get_next_line_utils.c\
+		libft.c\
+		libft2.c\
+		map_structure.c\
+		moves.c\
+		parser.c\
+		parsing_error_msg.c\
+		so_long.c
